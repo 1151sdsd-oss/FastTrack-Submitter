@@ -4,33 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>補件電子郵件快速產生器</title>
-    <!-- Tailwind CSS for modern responsive styling -->
+    <!-- Tailwind CSS for high quality layout styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- SheetJS for parsing R2_MEMBER.xlsx excel files -->
+    <!-- SheetJS to read excel sheets if available -->
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-    <!-- FontAwesome for beautiful icons -->
+    <!-- FontAwesome for icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <!-- Google Fonts Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        }
-        /* Custom scrollbar for better UI feel */
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f5f9;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
     </style>
 </head>
 <body class="bg-slate-50 min-h-screen text-slate-800 flex flex-col">
@@ -42,27 +28,27 @@
                     <i class="fa-solid fa-envelope-open-text text-2xl text-yellow-300"></i>
                 </div>
                 <div>
-                    <h1 class="text-xl sm:text-2xl font-bold tracking-tight">補件電子郵件快速產生系統</h1>
-                    <p class="text-xs sm:text-sm text-indigo-100 mt-0.5">一鍵產生並複製格式化補件信件，自動開啟本機信箱</p>
+                    <h1 class="text-xl sm:text-2xl font-bold tracking-tight">補件電子郵件快速產生器</h1>
+                    <p class="text-xs sm:text-sm text-indigo-100 mt-0.5">智慧防呆防錯機制 ‧ 廖元謄預設範例系統</p>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Main Container -->
+    <!-- Main Content Grid -->
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-6 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
             
+            <!-- Left Side: Interactive Input Form -->
             <div class="lg:col-span-7 space-y-6">
 
-                <!-- Main Form Fields -->
-                <div class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-5 space-y-5">
+                <!-- Section 1: Agent & Contact Info -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-5 space-y-4">
                     <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
-                        <i class="fa-solid fa-file-pen text-indigo-600 text-lg"></i>
-                        <h2 class="text-base font-semibold text-slate-800">信件變數與補件設定</h2>
+                        <i class="fa-solid fa-user-tie text-indigo-600 text-lg"></i>
+                        <h2 class="text-base font-semibold text-slate-800">1. 受理窗口代理人資訊</h2>
                     </div>
 
-                    <!-- Grid of Primary Contact Info -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <!-- Recipient Name -->
                         <div>
@@ -89,74 +75,39 @@
                                 <input type="email" id="input-email" class="block w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none" value="vic.liao@sinopac.com" placeholder="example@email.com">
                             </div>
                         </div>
+                    </div>
+                </div>
 
-                        <!-- Submitter Name -->
-                        <div>
-                            <label for="input-submitter" class="block text-xs font-semibold text-slate-600 mb-1">
-                                補件人姓名 <span class="text-red-500 font-bold">*</span>
-                            </label>
-                            <div class="relative rounded-lg shadow-sm">
-                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <i class="fa-solid fa-user-tag text-slate-400 text-xs"></i>
-                                </div>
-                                <input type="text" id="input-submitter" class="block w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none" placeholder="王小明">
-                            </div>
-                        </div>
+                <!-- Section 2: Re-planned logical fields with Smart Anti-Fool constraints -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-5 space-y-5">
+                    <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
+                        <i class="fa-solid fa-shield-halved text-indigo-600 text-lg"></i>
+                        <h2 class="text-base font-semibold text-slate-800">2. 借款與補件人資訊設定 (防呆排序)</h2>
+                    </div>
 
-                        <!-- Borrower Name -->
-                        <div>
-                            <label for="input-borrower" class="block text-xs font-semibold text-slate-600 mb-1">
-                                借款人姓名 <span class="text-red-500 font-bold">*</span>
-                            </label>
-                            <div class="relative rounded-lg shadow-sm">
-                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <i class="fa-solid fa-address-book text-slate-400 text-xs"></i>
-                                </div>
-                                <input type="text" id="input-borrower" class="block w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none" placeholder="陳大同">
+                    <!-- Step 1: Borrower Name -->
+                    <div>
+                        <label for="input-borrower" class="block text-xs font-semibold text-slate-700 mb-1">
+                            借款人姓名 <span class="text-red-500 font-bold">*</span>
+                        </label>
+                        <div class="relative rounded-lg shadow-sm">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fa-solid fa-user text-indigo-500 text-xs"></i>
                             </div>
+                            <input type="text" id="input-borrower" class="block w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-sm font-semibold text-slate-850 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all" value="" placeholder="請輸入借款人姓名 (例如：陳大同)">
                         </div>
                     </div>
 
-                    <!-- Single Select: Loan Type -->
+                    <!-- Step 2: Submitter Identity selection -->
                     <div>
-                        <span class="block text-xs font-semibold text-slate-600 mb-2">
-                            貸款種類 <span class="text-red-500 font-bold">*</span> (限定單選)
-                        </span>
-                        <div class="grid grid-cols-3 gap-3">
-                            <label class="relative flex items-center justify-center p-3 rounded-xl border border-slate-200 cursor-pointer transition-all hover:bg-slate-50/50" id="label-loan-房貸">
-                                <input type="radio" name="loan_type" value="房貸" checked class="sr-only">
-                                <div class="text-center">
-                                    <i class="fa-solid fa-house-chimney text-base mb-1 block text-slate-500"></i>
-                                    <span class="text-sm font-semibold text-slate-700 block">房貸</span>
-                                </div>
-                            </label>
-                            <label class="relative flex items-center justify-center p-3 rounded-xl border border-slate-200 cursor-pointer transition-all hover:bg-slate-50/50" id="label-loan-信貸">
-                                <input type="radio" name="loan_type" value="信貸" class="sr-only">
-                                <div class="text-center">
-                                    <i class="fa-solid fa-landmark text-base mb-1 block text-slate-500"></i>
-                                    <span class="text-sm font-semibold text-slate-700 block">信貸</span>
-                                </div>
-                            </label>
-                            <label class="relative flex items-center justify-center p-3 rounded-xl border border-slate-200 cursor-pointer transition-all hover:bg-slate-50/50" id="label-loan-其他">
-                                <input type="radio" name="loan_type" value="其他" class="sr-only">
-                                <div class="text-center">
-                                    <i class="fa-solid fa-ellipsis text-base mb-1 block text-slate-500"></i>
-                                    <span class="text-sm font-semibold text-slate-700 block">其他</span>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Single Select: Submitter Identity -->
-                    <div>
-                        <span class="block text-xs font-semibold text-slate-600 mb-2">
+                        <span class="block text-xs font-semibold text-slate-700 mb-2">
                             補件人身分 <span class="text-red-500 font-bold">*</span> (限定單選)
                         </span>
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                             <label class="relative flex items-center justify-between p-3 rounded-xl border border-slate-200 cursor-pointer transition-all hover:bg-slate-50/50" id="label-identity-借款人本人">
                                 <input type="radio" name="submitter_identity" value="借款人本人" checked class="sr-only">
                                 <div class="flex items-center gap-2">
-                                    <i class="fa-solid fa-user text-sm text-slate-500"></i>
+                                    <i class="fa-solid fa-user-shield text-sm text-slate-500"></i>
                                     <span class="text-sm font-semibold text-slate-700">借款人本人</span>
                                 </div>
                                 <i class="fa-solid fa-circle-check text-indigo-600 text-sm check-icon"></i>
@@ -167,7 +118,7 @@
                                     <i class="fa-solid fa-user-group text-sm text-slate-500"></i>
                                     <span class="text-sm font-semibold text-slate-700">保人或共借人</span>
                                 </div>
-                                <i class="fa-solid fa-circle-check text-indigo-600 text-sm check-icon"></i>
+                                <i class="fa-solid fa-circle-check text-indigo-600 text-sm check-icon hidden"></i>
                             </label>
                             <label class="relative flex items-center justify-between p-3 rounded-xl border border-slate-200 cursor-pointer transition-all hover:bg-slate-50/50" id="label-identity-其他關係人">
                                 <input type="radio" name="submitter_identity" value="其他關係人" class="sr-only">
@@ -175,28 +126,88 @@
                                     <i class="fa-solid fa-hands-helping text-sm text-slate-500"></i>
                                     <span class="text-sm font-semibold text-slate-700">其他關係人</span>
                                 </div>
-                                <i class="fa-solid fa-circle-check text-indigo-600 text-sm check-icon"></i>
+                                <i class="fa-solid fa-circle-check text-indigo-600 text-sm check-icon hidden"></i>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Submitter Name (Dynamically managed) -->
+                    <div>
+                        <div class="flex items-center justify-between mb-1">
+                            <label for="input-submitter" class="block text-xs font-semibold text-slate-700">
+                                補件人姓名 <span class="text-red-500 font-bold">*</span>
+                            </label>
+                            <span id="sync-status-badge" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200 flex items-center gap-1">
+                                <i class="fa-solid fa-arrows-rotate animate-spin text-[8px]"></i> 已自動同步借款人
+                            </span>
+                        </div>
+                        <div class="relative rounded-lg shadow-sm">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i id="submitter-icon" class="fa-solid fa-lock text-emerald-500 text-xs"></i>
+                            </div>
+                            <input type="text" id="input-submitter" class="block w-full pl-9 pr-3 py-2.5 bg-slate-100 border border-slate-200 rounded-lg text-sm font-semibold text-slate-500 cursor-not-allowed outline-none select-none" placeholder="系統自動代入中..." readonly>
+                        </div>
+                        <!-- Logical conflict error banner -->
+                        <div id="logic-error-warning" class="hidden mt-2.5 p-3 bg-rose-50 border border-rose-200 rounded-xl flex items-start gap-2">
+                            <i class="fa-solid fa-circle-exclamation text-rose-500 text-sm mt-0.5"></i>
+                            <span class="text-xs text-rose-700 font-medium leading-relaxed">
+                                <strong>邏輯衝突警示：</strong>補件人身分並非「借款人本人」，補件人姓名不應該與借款人姓名完全相同。請修正姓名以符合實際關聯！
+                            </span>
+                        </div>
+                    </div>
+
+                    <hr class="border-slate-100 my-1">
+
+                    <!-- Step 4: Loan Type (Exclusive single choice) -->
+                    <div>
+                        <span class="block text-xs font-semibold text-slate-700 mb-2">
+                            貸款種類 <span class="text-red-500 font-bold">*</span> (限定單選)
+                        </span>
+                        <div class="grid grid-cols-3 gap-3">
+                            <label class="relative flex items-center justify-center p-3 rounded-xl border border-indigo-600 bg-indigo-50/40 text-indigo-950 cursor-pointer transition-all" id="label-loan-房貸">
+                                <input type="radio" name="loan_type" value="房貸" checked class="sr-only">
+                                <div class="text-center">
+                                    <i class="fa-solid fa-house-chimney text-base mb-1 block text-slate-500"></i>
+                                    <span class="text-sm font-semibold text-slate-700 block">房貸</span>
+                                </div>
+                            </label>
+                            <label class="relative flex items-center justify-center p-3 rounded-xl border border-slate-200 text-slate-650 cursor-pointer transition-all hover:bg-slate-50/50" id="label-loan-信貸">
+                                <input type="radio" name="loan_type" value="信貸" class="sr-only">
+                                <div class="text-center">
+                                    <i class="fa-solid fa-landmark text-base mb-1 block text-slate-500"></i>
+                                    <span class="text-sm font-semibold text-slate-700 block">信貸</span>
+                                </div>
+                            </label>
+                            <label class="relative flex items-center justify-center p-3 rounded-xl border border-slate-200 text-slate-650 cursor-pointer transition-all hover:bg-slate-50/50" id="label-loan-其他">
+                                <input type="radio" name="loan_type" value="其他" class="sr-only">
+                                <div class="text-center">
+                                    <i class="fa-solid fa-ellipsis text-base mb-1 block text-slate-500"></i>
+                                    <span class="text-sm font-semibold text-slate-700 block">其他</span>
+                                </div>
                             </label>
                         </div>
                     </div>
                 </div>
 
+                <!-- Section 3: Document Checklist and Additional Settings -->
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-5 space-y-4">
                     <div class="flex items-center justify-between pb-2 border-b border-slate-100">
                         <div class="flex items-center gap-2">
                             <i class="fa-solid fa-list-check text-indigo-600 text-lg"></i>
-                            <h2 class="text-base font-semibold text-slate-800">補件種類 (複選，最少選擇一項)</h2>
+                            <div>
+                                <h2 class="text-base font-semibold text-slate-800">3. 補件項目與附加設定</h2>
+                                <p class="text-[10px] text-rose-500 font-medium mt-0.5"><i class="fa-solid fa-circle-exclamation mr-0.5"></i> 至少需選1項、可複選</p>
+                            </div>
                         </div>
-                        <span id="selected-count" class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-600 border border-indigo-100">
-                            已選 1 項
+                        <span id="selected-count" class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-50 text-rose-600 border border-rose-100">
+                            已選 0 項
                         </span>
                     </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2" id="doc-types-container">
-                        <!-- Items populated programmatically with icons -->
-                    </div>
+                    <!-- Populated dynamically via JS to assign icons properly -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2" id="doc-types-container"></div>
 
-                    <!-- Password Settings -->
+                    <!-- Password toggle settings -->
                     <div class="pt-4 border-t border-slate-100 space-y-3">
                         <div class="flex items-center justify-between">
                             <label for="has-password" class="flex items-center gap-2.5 cursor-pointer">
@@ -212,47 +223,83 @@
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                     <i class="fa-solid fa-lock text-slate-400 text-xs"></i>
                                 </div>
-                                <input type="text" id="input-password" class="block w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none" placeholder="請輸入解密密碼，例如：身分證後四碼">
+                                <input type="text" id="input-password" class="block w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none" placeholder="輸入解密密碼 (例如: 身分證後四碼)">
                             </div>
                         </div>
                     </div>
 
-                    <!-- Additional Notes -->
+                    <!-- Section 4: Empty Comment box with Quick Insert triggers -->
                     <div class="pt-3">
-                        <label for="input-notes" class="block text-xs font-semibold text-slate-600 mb-1.5">
-                            <i class="fa-regular fa-comment-dots mr-1 text-slate-400"></i>補充說明 (如方便聯絡時間、聯絡電話、備註等)
-                        </label>
-                        <textarea id="input-notes" rows="3" class="block w-full p-3 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none resize-y" placeholder="請在此輸入補充說明（例：方便於平日下午 2-5 點接聽電話、電話：0912-345-678）"></textarea>
+                        <div class="flex flex-col mb-3">
+                            <label for="input-notes" class="block text-xs font-semibold text-slate-600 mb-2">
+                                <i class="fa-regular fa-comment-dots mr-1 text-slate-400"></i>補充說明 (預設不填入文字)
+                            </label>
+                            
+                            <!-- Insert template buttons categorized -->
+                            <div class="bg-slate-50 rounded-xl p-3 border border-slate-200/60 space-y-3">
+                                <!-- Group 1: Contact Preferences -->
+                                <div class="flex flex-wrap items-center gap-1.5">
+                                    <span class="text-[10px] font-bold text-slate-400 mr-1 uppercase tracking-wider">📞 聯絡設定：</span>
+                                    <button type="button" id="btn-tmpl-time" class="text-[10px] font-semibold px-2 py-1 rounded bg-white hover:bg-slate-100 text-indigo-600 border border-slate-200 transition-all flex items-center gap-1 shadow-sm active:scale-95" title="點擊填入方便聯絡時間">
+                                        🕒 方便聯絡時間
+                                    </button>
+                                    <button type="button" id="btn-tmpl-date" class="text-[10px] font-semibold px-2 py-1 rounded bg-white hover:bg-slate-100 text-indigo-600 border border-slate-200 transition-all flex items-center gap-1 shadow-sm active:scale-95" title="點擊開啟日期選擇器">
+                                        📅 方便聯絡日期
+                                    </button>
+                                    <button type="button" id="btn-tmpl-mobile" class="text-[10px] font-semibold px-2 py-1 rounded bg-white hover:bg-slate-100 text-indigo-600 border border-slate-200 transition-all flex items-center gap-1 shadow-sm active:scale-95" title="點擊設定手機號碼">
+                                        📱 聯絡手機
+                                    </button>
+                                    <button type="button" id="btn-tmpl-tel" class="text-[10px] font-semibold px-2 py-1 rounded bg-white hover:bg-slate-100 text-indigo-600 border border-slate-200 transition-all flex items-center gap-1 shadow-sm active:scale-95" title="點擊設定市話與分機">
+                                        ☎️ 聯絡市話
+                                    </button>
+                                    <button type="button" id="btn-tmpl-contact" class="text-[10px] font-semibold px-2 py-1 rounded bg-white hover:bg-slate-100 text-indigo-600 border border-slate-200 transition-all flex items-center gap-1 shadow-sm active:scale-95" title="點擊設定其他聯絡對象">
+                                        👤 聯絡人
+                                    </button>
+                                </div>
+                                <!-- Group 2: Resubmission Status -->
+                                <div class="flex flex-wrap items-center gap-1.5 pt-2 border-t border-slate-200/50">
+                                    <span class="text-[10px] font-bold text-slate-400 mr-1 uppercase tracking-wider">⏳ 補件進度：</span>
+                                    <button type="button" id="btn-tmpl-later" class="text-[10px] font-semibold px-2 py-1 rounded bg-white hover:bg-slate-100 text-emerald-600 border border-slate-200 transition-all flex items-center gap-1 shadow-sm active:scale-95" title="設定預計幾天後補傳">
+                                        ⏳ 補件後補
+                                    </button>
+                                    <button type="button" id="btn-tmpl-difficulty" class="text-[10px] font-semibold px-2 py-1 rounded bg-white hover:bg-slate-100 text-amber-600 border border-slate-200 transition-all flex items-center gap-1 shadow-sm active:scale-95" title="設定近期因故不便回傳">
+                                        ⚠️ 補件困難
+                                    </button>
+                                    <button type="button" id="btn-tmpl-clear" class="text-[10px] font-bold px-2 py-1 rounded bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200 transition-all flex items-center gap-1 shadow-sm active:scale-95 ml-auto" title="清空全部文字">
+                                        🧹 清除說明
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <textarea id="input-notes" rows="4" class="block w-full p-3 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none resize-y" placeholder="點擊上方按鈕快速自訂填入，或自行填入補充聯絡事項等說明..."></textarea>
                     </div>
                 </div>
 
             </div>
 
+            <!-- Right Side: Dark high fidelity mock client with email controls -->
             <div class="lg:col-span-5 lg:sticky lg:top-6 space-y-6">
 
-                <!-- Preview Box acting as a rich interactive email simulator -->
                 <div class="bg-slate-900 text-slate-100 rounded-2xl shadow-xl overflow-hidden border border-slate-800">
                     
-                    <!-- Email Header Interface Bar -->
-                    <div class="bg-slate-800 px-4 py-3.5 border-b border-slate-700 flex items-center justify-between">
+                    <!-- Email Bar Simulator Header -->
+                    <div class="bg-slate-850 px-4 py-3.5 border-b border-slate-800 flex items-center justify-between">
                         <div class="flex items-center gap-2">
                             <div class="flex gap-1.5">
-                                <span class="w-3 h-3 rounded-full bg-red-500 block"></span>
-                                <span class="w-3 h-3 rounded-full bg-yellow-500 block"></span>
-                                <span class="w-3 h-3 rounded-full bg-green-500 block"></span>
+                                <span class="w-3 h-3 rounded-full bg-rose-500 block"></span>
+                                <span class="w-3 h-3 rounded-full bg-amber-500 block"></span>
+                                <span class="w-3 h-3 rounded-full bg-emerald-500 block"></span>
                             </div>
                             <span class="text-xs font-semibold text-slate-400 ml-2 tracking-wide uppercase">信件預覽模擬</span>
                         </div>
-                        <div class="flex items-center gap-1">
-                            <button id="copy-all-btn" class="text-xs bg-slate-700 hover:bg-slate-600 text-slate-200 hover:text-white px-2.5 py-1 rounded transition-colors flex items-center gap-1" title="複製所有內文">
-                                <i class="fa-regular fa-copy"></i>
-                                <span>複製全文</span>
-                            </button>
-                        </div>
+                        <button id="copy-all-btn" class="text-xs bg-slate-700 hover:bg-slate-600 text-slate-200 hover:text-white px-2.5 py-1 rounded transition-all flex items-center gap-1 active:scale-95">
+                            <i class="fa-regular fa-copy"></i>
+                            <span>複製全文</span>
+                        </button>
                     </div>
 
-                    <!-- Email Fields (To, Subject) -->
-                    <div class="px-4 py-3 border-b border-slate-800 space-y-2.5 text-sm bg-slate-850">
+                    <!-- Email Fields To & Subject -->
+                    <div class="px-4 py-3 border-b border-slate-850 space-y-2.5 text-sm bg-slate-850/50">
                         <div class="flex items-baseline">
                             <span class="text-slate-500 font-medium w-16 text-right pr-3">收件人:</span>
                             <span id="preview-to" class="text-slate-300 break-all font-mono"></span>
@@ -263,48 +310,42 @@
                         </div>
                     </div>
 
-                    <!-- Rich Text Preview Area -->
-                    <div class="p-5 min-h-[340px] max-h-[500px] overflow-y-auto text-sm leading-relaxed whitespace-pre-wrap bg-slate-900 font-sans" id="preview-body">
-                        <!-- Content auto populated via JS -->
-                    </div>
+                    <!-- Email Main Preview Body -->
+                    <div class="p-5 min-h-[340px] max-h-[500px] overflow-y-auto text-sm leading-relaxed whitespace-pre-wrap bg-slate-900 font-sans" id="preview-body"></div>
 
-                    <!-- Footer of the Email Simulator Card -->
-                    <div class="p-4 bg-slate-855 border-t border-slate-800/80 flex flex-col gap-3">
+                    <!-- Email Actions & UX Helper Block -->
+                    <div class="p-4 bg-slate-850 border-t border-slate-800 flex flex-col gap-3">
                         
-                        <!-- Important Warning Banner for UX clarity -->
-                        <div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-3 flex items-start gap-2.5">
-                            <i class="fa-solid fa-triangle-exclamation text-amber-400 text-sm mt-0.5"></i>
+                        <!-- Manual Action Warning -->
+                        <div class="bg-amber-500/10 border border-amber-500/35 rounded-xl p-3 flex items-start gap-2.5">
+                            <i class="fa-solid fa-triangle-exclamation text-amber-400 text-sm mt-0.5 animate-pulse"></i>
                             <div class="text-xs text-amber-200 leading-normal">
-                                <strong>⚠️ 重要的步驟提示</strong><br>
-                                網頁不支援自動夾帶您的實體檔案。請於點擊下方按鈕後，<strong>務必手動在郵件程式中夾帶補件檔案</strong>！
+                                <strong>⚠️ 郵件夾帶提示：</strong><br>
+                                網頁不支援自動掛載實體附件。點擊下方按鈕後，<strong>請務必於開啟的信件程式中「手動拖曳夾帶」補件檔案！</strong>
                             </div>
                         </div>
 
-                        <!-- Primary Send Button -->
-                        <button id="send-email-btn" class="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 active:transform active:scale-[0.99] text-white font-bold py-3.5 px-4 rounded-xl shadow-lg hover:shadow-emerald-900/20 transition-all flex items-center justify-center gap-2 text-base">
+                        <!-- Mailto URL Length Indicator -->
+                        <div class="flex items-center justify-between text-xs px-1.5 bg-slate-900/40 py-2.5 rounded-xl border border-slate-800">
+                            <span class="text-slate-400">連結預估長度: <span id="mailto-char-count" class="font-mono text-emerald-400 font-bold">0</span> / 2000 字</span>
+                            <span id="mailto-length-warning" class="hidden text-amber-400 font-semibold flex items-center gap-1 text-[11px] animate-pulse">
+                                <i class="fa-solid fa-triangle-exclamation"></i> 連結過長，建議複製全文！
+                            </span>
+                        </div>
+
+                        <!-- Direct Send Trigger -->
+                        <button id="send-email-btn" class="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 active:transform active:scale-[0.99] text-white font-bold py-3.5 px-4 rounded-xl shadow-lg hover:shadow-emerald-950/40 transition-all flex items-center justify-center gap-2 text-base disabled:from-slate-700 disabled:to-slate-800 disabled:text-slate-550 disabled:shadow-none disabled:cursor-not-allowed">
                             <i class="fa-solid fa-paper-plane"></i>
                             <span>點擊【補件】啟動 Email 寄送</span>
                         </button>
 
-                        <div class="flex items-center justify-between text-xs text-slate-400 px-1">
-                            <span>點擊自動呼叫本地信件用戶端</span>
+                        <div class="flex items-center justify-between text-[11px] text-slate-400 px-1">
+                            <span>一鍵開啟預設郵件軟體</span>
                             <button id="copy-subject-btn" class="hover:text-indigo-400 transition-colors flex items-center gap-1">
-                                <i class="fa-regular fa-copy"></i> 僅複製信件標題
+                                <i class="fa-regular fa-copy"></i> 複製信件標題
                             </button>
                         </div>
                     </div>
-                </div>
-
-                <!-- Explanation Box -->
-                <div class="bg-indigo-50 border border-indigo-100 rounded-2xl p-5">
-                    <h3 class="text-sm font-bold text-indigo-900 flex items-center gap-1.5 mb-2.5">
-                        <i class="fa-solid fa-circle-info"></i>
-                        <span>快速操作說明</span>
-                    </h3>
-                    <ul class="space-y-2 text-xs text-indigo-950/80 list-decimal pl-4">
-                        <li><strong>填寫內容：</strong>填寫或修改代理人姓名/信箱、補件人、借款人與勾選對應的補件種類（支援複選）。</li>
-                        <li><strong>執行補件：</strong>確認右側預覽無誤後，點擊下方「補件」按鈕，系統將自動開啟您的電子郵件軟體（如 Outlook / Gmail），開啟後<strong>請別忘了確實手動夾帶您的檔案</strong>。</li>
-                    </ul>
                 </div>
 
             </div>
@@ -312,68 +353,194 @@
         </div>
     </main>
 
-    <!-- Notification Toast component -->
+    <!-- Custom Parameter Settings Modal -->
+    <div id="template-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden opacity-0 transition-all duration-300">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full border border-slate-100 overflow-hidden transform scale-95 transition-all duration-300">
+            <!-- Modal Header -->
+            <div class="bg-slate-50 px-5 py-4 border-b border-slate-100 flex items-center justify-between">
+                <h3 class="text-base font-bold text-slate-800 flex items-center gap-2">
+                    <i id="modal-header-icon" class="fa-solid fa-sliders text-indigo-600"></i>
+                    <span id="modal-header-title">自訂範本參數</span>
+                </h3>
+                <button type="button" id="btn-modal-close" class="text-slate-400 hover:text-slate-600 transition-colors p-1 rounded-lg hover:bg-slate-100">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Modal Content Panels -->
+            <div class="p-5 space-y-4">
+                
+                <!-- Panel: Date Picker -->
+                <div id="panel-date" class="tmpl-panel space-y-3 hidden">
+                    <p class="text-xs text-slate-500">選擇希望聯絡的日期，系統會自動推算星期幾並產出格式。</p>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">方便聯絡日期</label>
+                        <input type="date" id="param-date-picker" class="block w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">相對時點描述</label>
+                        <select id="param-date-relation" class="block w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
+                            <option value="當天">當天</option>
+                            <option value="之後">之後</option>
+                            <option value="之前">之前</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Panel: Contact -->
+                <div id="panel-contact" class="tmpl-panel space-y-3 hidden">
+                    <p class="text-xs text-slate-500">若補件人不方便聯絡、請輸入後續可協助聯繫的親友聯絡方式</p>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">親友/聯絡人姓名</label>
+                        <input type="text" id="param-contact-name" class="block w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none" placeholder="例如：配偶王小姐">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">親友/聯絡人電話</label>
+                        <input type="text" id="param-contact-phone" class="block w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none" placeholder="例如：0912-345-678">
+                    </div>
+                </div>
+
+                <!-- Panel: Later Resubmit -->
+                <div id="panel-later" class="tmpl-panel space-y-3 hidden">
+                    <p class="text-xs text-slate-500">告知窗口部分資料未齊，預估幾天後補傳。</p>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">尚未補齊的資料項目</label>
+                        <input type="text" id="param-later-doc" class="block w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none" placeholder="例如：財力證明">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">預計幾天後補傳</label>
+                        <div class="relative rounded-lg shadow-sm">
+                            <input type="number" id="param-later-days" min="1" max="30" class="block w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none" placeholder="3">
+                            <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                <span class="text-slate-400 text-xs">天後</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel: Difficulty Resubmit -->
+                <div id="panel-difficulty" class="tmpl-panel space-y-3 hidden">
+                    <p class="text-xs text-slate-500">告知窗口有些資料因特殊狀況，兩周內不便提供。</p>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">遭遇困難的資料項目</label>
+                        <input type="text" id="param-difficulty-doc" class="block w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none" placeholder="例如：在職證明">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">困難或未齊原因</label>
+                        <input type="text" id="param-difficulty-reason" class="block w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none" placeholder="例如：公司行政作業請假流程較慢">
+                    </div>
+                </div>
+
+                <!-- Panel: Mobile Phone -->
+                <div id="panel-mobile" class="tmpl-panel space-y-3 hidden">
+                    <p class="text-xs text-slate-500">輸入常用或本次方便聯絡的手機號碼。</p>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">聯絡手機</label>
+                        <input type="text" id="param-mobile-phone" class="block w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none" value="" placeholder="請輸入手機號碼 (例如: 0912-345-678)">
+                    </div>
+                </div>
+
+                <!-- Panel: Tel Phone -->
+                <div id="panel-tel" class="tmpl-panel space-y-3 hidden">
+                    <p class="text-xs text-slate-500">輸入市內電話，可包含分機號碼。</p>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">市話號碼</label>
+                        <input type="text" id="param-tel-phone" class="block w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none" value="" placeholder="請輸入市話號碼 (例如: 02-2345-6789)">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">分機號碼 (選填)</label>
+                        <input type="text" id="param-tel-ext" class="block w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none" placeholder="例如：123">
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="bg-slate-50 px-5 py-4 border-t border-slate-100 flex items-center justify-end gap-2">
+                <button type="button" id="btn-modal-cancel" class="px-4 py-2 bg-white hover:bg-slate-100 text-slate-600 border border-slate-200 rounded-lg text-xs font-bold transition-all active:scale-95">
+                    取消
+                </button>
+                <button type="button" id="btn-modal-confirm" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-xs font-bold transition-all active:scale-95 shadow-md shadow-indigo-100">
+                    確認匯入
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Notification Popup (Toast) -->
     <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-10 opacity-0 transition-all duration-300 bg-slate-800 text-white px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2 border border-slate-700 max-w-sm">
         <i id="toast-icon" class="fa-solid fa-circle-check text-green-400"></i>
-        <span id="toast-message" class="text-sm font-medium">訊息</span>
+        <span id="toast-message" class="text-sm font-medium">系統訊息</span>
     </div>
 
     <script>
-        // Core Document options
+        // Options definition
         const DOC_TYPES = [
             "身分證明", "在職證明", "財力證明", "繳息證明", "租收證明", 
             "買賣合約", "購屋金流佐證", "貸後用途金流佐證", "附表文件", "其他"
         ];
 
-        // State Variables
-        let selectedDocTypes = new Set(["身分證明"]); // Default selection
-        
-        // DOM elements
+        // State setup - Default to empty (no items selected)
+        let selectedDocTypes = new Set([]);
+        let isFormValid = true;
+        let currentActiveTemplate = ''; // Tracking opened modal template
+
+        // Fetch element refs
         const docTypesContainer = document.getElementById('doc-types-container');
         const selectedCountBadge = document.getElementById('selected-count');
         
-        // Input Form DOMs
         const inputRecipient = document.getElementById('input-recipient');
         const inputEmail = document.getElementById('input-email');
-        const inputSubmitter = document.getElementById('input-submitter');
         const inputBorrower = document.getElementById('input-borrower');
+        const inputSubmitter = document.getElementById('input-submitter');
         const inputPassword = document.getElementById('input-password');
         const hasPasswordCheckbox = document.getElementById('has-password');
         const passwordInputGroup = document.getElementById('password-input-group');
         const inputNotes = document.getElementById('input-notes');
 
-        // Preview DOMs
+        const syncStatusBadge = document.getElementById('sync-status-badge');
+        const logicErrorWarning = document.getElementById('logic-error-warning');
+        const submitterIcon = document.getElementById('submitter-icon');
+
+        // Main template triggers
+        const btnTmplTime = document.getElementById('btn-tmpl-time');
+        const btnTmplDate = document.getElementById('btn-tmpl-date');
+        const btnTmplMobile = document.getElementById('btn-tmpl-mobile');
+        const btnTmplTel = document.getElementById('btn-tmpl-tel');
+        const btnTmplContact = document.getElementById('btn-tmpl-contact');
+        const btnTmplLater = document.getElementById('btn-tmpl-later');
+        const btnTmplDifficulty = document.getElementById('btn-tmpl-difficulty');
+        const btnTmplClear = document.getElementById('btn-tmpl-clear');
+
+        // Modal Element refs
+        const templateModal = document.getElementById('template-modal');
+        const modalHeaderIcon = document.getElementById('modal-header-icon');
+        const modalHeaderTitle = document.getElementById('modal-header-title');
+        const btnModalClose = document.getElementById('btn-modal-close');
+        const btnModalCancel = document.getElementById('btn-modal-cancel');
+        const btnModalConfirm = document.getElementById('btn-modal-confirm');
+
         const previewTo = document.getElementById('preview-to');
         const previewSubject = document.getElementById('preview-subject');
         const previewBody = document.getElementById('preview-body');
 
-        // Buttons
         const sendEmailBtn = document.getElementById('send-email-btn');
         const copyAllBtn = document.getElementById('copy-all-btn');
         const copySubjectBtn = document.getElementById('copy-subject-btn');
 
         function init() {
             renderDocCheckboxes();
-            setupRadioButtons();
-            
-            // Set some default user mock values to demonstrate usability immediately
-            inputSubmitter.value = "王小明";
-            inputBorrower.value = "陳大同";
-            inputNotes.value = "方便接聽電話的時間為：工作日 12:00-13:30 及 18:00 以後。\n聯絡電話：0912-345-678";
-
-            updateEmailPreview();
-            attachEventListeners();
-            
-            // Auto-detect R2_MEMBER.xlsx from relative path in background
+            setupRadioStates();
+            validateAndSyncNames();
             autoLoadR2MemberExcel();
         }
 
-        // Automatically attempt to fetch and load R2_MEMBER.xlsx from current directory
+        // Try silently pulling R2_MEMBER.xlsx from relative folder, fail gracefully to fallback values
         async function autoLoadR2MemberExcel() {
             try {
                 const response = await fetch('R2_MEMBER.xlsx');
                 if (!response.ok) {
-                    throw new Error('R2_MEMBER.xlsx file not found on relative path.');
+                    throw new Error("File not found locally.");
                 }
                 const buffer = await response.arrayBuffer();
                 const data = new Uint8Array(buffer);
@@ -384,7 +551,6 @@
 
                 if (jsonData.length === 0) return;
 
-                // Attempt to identify Agent and Email columns
                 const keys = Object.keys(jsonData[0]);
                 let agentKey = keys.find(k => k.match(/代理人|收件人|姓名|Name|agent/i));
                 let emailKey = keys.find(k => k.match(/email|信箱|電郵|郵件|mail/i));
@@ -392,24 +558,71 @@
                 if (!agentKey) agentKey = keys[0];
                 if (!emailKey) emailKey = keys[1] || keys[0];
 
-                // Gather the first valid agent
                 const firstRow = jsonData.find(row => row[agentKey] && row[emailKey]);
                 if (firstRow) {
                     inputRecipient.value = String(firstRow[agentKey]).trim();
                     inputEmail.value = String(firstRow[emailKey]).trim();
-                    showNotification("已自動載入 R2_MEMBER.xlsx 的首位代理人對照資訊！", "success");
+                    showNotification("已成功載入 R2_MEMBER.xlsx 中的窗口人員資料！", "success");
                     updateEmailPreview();
                 }
             } catch (err) {
-                console.log("提示：未偵測到 R2_MEMBER.xlsx 檔案，使用網頁預設代理人廖元謄。");
+                console.log("提示：未發現或無法讀取 R2_MEMBER.xlsx，套用預設窗口(廖元謄)資訊。");
             }
         }
 
-        // Render document options with beautiful icons
+        // Main synchronization function to prevent logical errors between borrower and submitter names
+        function validateAndSyncNames() {
+            const borrower = inputBorrower.value.trim();
+            const identity = document.querySelector('input[name="submitter_identity"]:checked')?.value || "借款人本人";
+            const submitter = inputSubmitter.value.trim();
+
+            isFormValid = true; 
+            logicErrorWarning.classList.add('hidden');
+            
+            // Clear input styling errors
+            inputBorrower.classList.remove('border-rose-400', 'bg-rose-50/25', 'focus:ring-rose-500', 'focus:border-rose-500');
+            inputSubmitter.classList.remove('border-rose-400', 'bg-rose-50/25', 'focus:ring-rose-500', 'focus:border-rose-500');
+
+            if (identity === "借款人本人") {
+                // LOCK AND SYNC
+                syncStatusBadge.classList.remove('hidden');
+                submitterIcon.className = "fa-solid fa-lock text-emerald-500 text-xs";
+                
+                inputSubmitter.value = borrower; 
+                inputSubmitter.readOnly = true;
+                
+                inputSubmitter.className = "block w-full pl-9 pr-3 py-2.5 bg-slate-100 border border-slate-200 rounded-lg text-sm font-semibold text-slate-500 cursor-not-allowed outline-none select-none";
+            } else {
+                // UNLOCKED & MANUAL INPUT
+                syncStatusBadge.classList.add('hidden');
+                submitterIcon.className = "fa-solid fa-user-tag text-indigo-500 text-xs";
+                
+                inputSubmitter.readOnly = false;
+                inputSubmitter.className = "block w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-sm font-semibold text-slate-800 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all";
+                
+                // If borrower has a name and user is in manually input mode, check if names are exactly identical
+                if (submitter === borrower && borrower !== "") {
+                    isFormValid = false;
+                    logicErrorWarning.classList.remove('hidden');
+                    
+                    // Style both inputs in warning red
+                    inputBorrower.classList.add('border-rose-400', 'bg-rose-50/25', 'focus:ring-rose-500', 'focus:border-rose-500');
+                    inputSubmitter.classList.add('border-rose-400', 'bg-rose-50/25', 'focus:ring-rose-500', 'focus:border-rose-500');
+                } else if (submitter === "") {
+                    isFormValid = false;
+                }
+            }
+
+            // Force button state according to validation
+            sendEmailBtn.disabled = !isFormValid;
+            
+            updateEmailPreview();
+        }
+
+        // Render checkboxes for resubmission items
         function renderDocCheckboxes() {
             docTypesContainer.innerHTML = '';
             
-            // Map corresponding icons for a visually beautiful layout
             const iconMap = {
                 "身分證明": "fa-id-card text-emerald-500",
                 "在職證明": "fa-briefcase text-blue-500",
@@ -440,106 +653,149 @@
             });
         }
 
-        function setupRadioButtons() {
-            // Loan type selectors
+        // Apply styled highlights to selected radio groups
+        function setupRadioStates() {
+            // 1. Identity Selection Setup
+            const identityRadios = document.querySelectorAll('input[name="submitter_identity"]');
+            identityRadios.forEach(radio => {
+                const val = radio.value;
+                const label = document.getElementById(`label-identity-${val}`);
+                if (!label) return;
+                const checkIcon = label.querySelector('.check-icon');
+                if (radio.checked) {
+                    label.className = "relative flex items-center justify-between p-3 rounded-xl border-2 border-indigo-600 bg-indigo-50/40 text-indigo-950 cursor-pointer transition-all";
+                    if (checkIcon) checkIcon.classList.remove('hidden');
+                } else {
+                    label.className = "relative flex items-center justify-between p-3 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 cursor-pointer transition-all";
+                    if (checkIcon) checkIcon.classList.add('hidden');
+                }
+            });
+
+            // 2. Loan Type Selection Setup
             const loanRadios = document.querySelectorAll('input[name="loan_type"]');
             loanRadios.forEach(radio => {
                 const val = radio.value;
                 const label = document.getElementById(`label-loan-${val}`);
+                if (!label) return;
                 if (radio.checked) {
                     label.className = "relative flex items-center justify-center p-3 rounded-xl border-2 border-indigo-600 bg-indigo-50/40 text-indigo-950 cursor-pointer transition-all";
                 } else {
                     label.className = "relative flex items-center justify-center p-3 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 cursor-pointer transition-all";
                 }
             });
-
-            // Identity type selectors
-            const identityRadios = document.querySelectorAll('input[name="submitter_identity"]');
-            identityRadios.forEach(radio => {
-                const val = radio.value;
-                const label = document.getElementById(`label-identity-${val}`);
-                const checkIcon = label.querySelector('.check-icon');
-                if (radio.checked) {
-                    label.className = "relative flex items-center justify-between p-3 rounded-xl border-2 border-indigo-600 bg-indigo-50/40 text-indigo-950 cursor-pointer transition-all";
-                    checkIcon.classList.remove('hidden');
-                } else {
-                    label.className = "relative flex items-center justify-between p-3 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 cursor-pointer transition-all";
-                    checkIcon.classList.add('hidden');
-                }
-            });
         }
 
+        // Formulates final email block with variables
         function updateEmailPreview() {
             const recipient = inputRecipient.value.trim() || "{收件人}";
             const email = inputEmail.value.trim() || "{信箱}";
+            const borrower = inputBorrower.value.trim() || "{借款人}";
             const submitter = inputSubmitter.value.trim() || "{補件人}";
-            const borrower = inputBorrower.value.trim() || "{借款人姓名}";
-            const loanType = document.querySelector('input[name="loan_type"]:checked')?.value || "{貸款種類}";
-            const submitterIdentity = document.querySelector('input[name="submitter_identity"]:checked')?.value || "{補件人身分}";
+            const identity = document.querySelector('input[name="submitter_identity"]:checked')?.value || "借款人本人";
+            const loanType = document.querySelector('input[name="loan_type"]:checked')?.value || "房貸";
             const hasPassword = hasPasswordCheckbox.checked;
-            const passwordValue = inputPassword.value.trim();
+            const passwordVal = inputPassword.value.trim();
             const notes = inputNotes.value.trim();
 
-            // Assemble Document Types List
-            let docListText = '';
+            // Assemble document type list
+            let docList = '';
             if (selectedDocTypes.size === 0) {
-                docListText = "（⚠️ 尚未選擇任何補件項目）";
+                docList = "（⚠️ 尚未點選任何補件項目）";
             } else {
                 Array.from(selectedDocTypes).forEach((doc, idx) => {
-                    docListText += `${idx + 1}. ${doc}\n`;
+                    docList += `${idx + 1}. ${doc}\n`;
                 });
-                docListText = docListText.trim();
+                docList = docList.trim();
             }
 
-            // Create two-character summary for selected document types (e.g., "身分證明" -> "身分")
-            const selectedDocSummary = Array.from(selectedDocTypes)
+            // Create subject suffix (e.g. "身分證明、財力證明" -> "(身分、財力)")
+            const summarySegment = selectedDocTypes.size === 0 ? "未選取任何項目" : Array.from(selectedDocTypes)
                 .map(doc => doc.substring(0, 2))
                 .join('、');
 
-            // Subject: "{補件人}{貸款種類}補件({摘要})"
-            const emailSubject = `${submitter}${loanType}補件(${selectedDocSummary})`;
+            // Final Mail Subject
+            const emailSubject = `${submitter}${loanType}補件(${summarySegment})`;
 
-            // Dynamic Body Generation
+            // Construct content string
             let emailBody = `您好，
 
-以下為【${borrower}】之補件資料，請協助收件並進行後續審查，謝謝！
+以下為【${borrower}】之補件資料，請協助收件並處理審查作業，謝謝！
 
 ■ 借款人姓名：${borrower}
 ■ 補件人姓名：${submitter}
-■ 補件人身分：${submitterIdentity}
+■ 補件人身分：${identity}
 ■ 貸款種類：${loanType}
 
-■ 補件項目清單：
-${docListText}`;
+■ 補件項目：
+${docList}`;
 
-            // Password condition check
+            // Add optional password information
             if (hasPassword) {
-                emailBody += `\n\n■ 檔案開啟密碼：${passwordValue || "（請於左側輸入密碼）"}`;
+                emailBody += `\n\n■ 檔案解密密碼：${passwordVal || "（請於左側輸入開啟密碼）"}`;
             }
 
-            // Additional Notes check
+            // Append additional notes if they exist
             if (notes) {
                 emailBody += `\n\n■ 補充說明：\n${notes}`;
-            } else {
-                emailBody += `\n\n■ 補充說明：\n無特定補充事項。`;
             }
 
             emailBody += `\n\n祝 工作順心！`;
 
-            // Populate the Preview Simulator HTML elements
-            previewTo.textContent = email ? `${recipient} <${email}>` : '（請輸入代理人信箱）';
+            // Display in browser email simulation mock
+            previewTo.textContent = email ? `${recipient} <${email}>` : '（請輸入信箱）';
             previewSubject.textContent = emailSubject;
-            
-            // Format HTML representation for previewing in code
-            let previewBodyFormatted = emailBody
+
+            // Highlight markers safely for simulated view
+            let formattedHtml = emailBody
                 .replace(/■ (.*?)(：|\n)/g, '<strong class="text-indigo-400">■ $1$2</strong>')
                 .replace(/(\d+\..+)/g, '<span class="text-emerald-400">$1</span>')
-                .replace(/(⚠️ 尚未選擇任何補件項目)/g, '<span class="text-red-500 font-bold">$1</span>');
+                .replace(/(⚠️ 尚未點選任何補件項目)/g, '<span class="text-red-500 font-semibold animate-pulse">$1</span>');
 
-            previewBody.innerHTML = previewBodyFormatted;
+            previewBody.innerHTML = formattedHtml;
+
+            // Calculate Mailto URL Length and update UI limit warnings
+            const testMailto = `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+            const mailtoLength = testMailto.length;
+            const charCountEl = document.getElementById('mailto-char-count');
+            const warningEl = document.getElementById('mailto-length-warning');
+
+            if (charCountEl) {
+                charCountEl.textContent = mailtoLength;
+                if (mailtoLength > 2000) {
+                    charCountEl.className = "font-mono text-amber-400 font-bold animate-pulse";
+                    if (warningEl) warningEl.classList.remove('hidden');
+                } else {
+                    charCountEl.className = "font-mono text-emerald-400 font-bold";
+                    if (warningEl) warningEl.classList.add('hidden');
+                }
+            }
         }
 
-        // Helper to trigger stylish custom toast notifications (replaces alert)
+        // Custom notification component logic
+        function showNotification(message, type = "success") {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            const toastIcon = document.getElementById('toast-icon');
+
+            toastMessage.textContent = message;
+
+            if (type === "success") {
+                toastIcon.className = "fa-solid fa-circle-check text-green-400 text-lg";
+                toast.className = "fixed bottom-5 right-5 z-50 transform translate-y-0 opacity-100 transition-all duration-300 bg-slate-800 text-white px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2 border border-slate-700 max-w-sm";
+            } else if (type === "warning") {
+                toastIcon.className = "fa-solid fa-triangle-exclamation text-amber-400 text-lg animate-bounce";
+                toast.className = "fixed bottom-5 right-5 z-50 transform translate-y-0 opacity-100 transition-all duration-300 bg-slate-800 text-white px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2 border border-amber-500/50 max-w-sm";
+            } else {
+                toastIcon.className = "fa-solid fa-circle-exclamation text-rose-500 text-lg";
+                toast.className = "fixed bottom-5 right-5 z-50 transform translate-y-0 opacity-100 transition-all duration-300 bg-slate-800 text-white px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2 border border-rose-950/40 max-w-sm";
+            }
+
+            setTimeout(() => {
+                toast.className = "fixed bottom-5 right-5 z-50 transform translate-y-10 opacity-0 transition-all duration-300 bg-slate-800 text-white px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2 border border-slate-700 max-w-sm pointer-events-none";
+            }, 4500);
+        }
+
+        // Custom notification component logic
         function showNotification(message, type = "success") {
             const toast = document.getElementById('toast');
             const toastMessage = document.getElementById('toast-message');
@@ -555,30 +811,181 @@ ${docListText}`;
                 toast.className = "fixed bottom-5 right-5 z-50 transform translate-y-0 opacity-100 transition-all duration-300 bg-slate-800 text-white px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2 border border-rose-950/40 max-w-sm";
             }
 
-            // Hide after 3.5 seconds
             setTimeout(() => {
                 toast.className = "fixed bottom-5 right-5 z-50 transform translate-y-10 opacity-0 transition-all duration-300 bg-slate-800 text-white px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2 border border-slate-700 max-w-sm pointer-events-none";
             }, 3500);
         }
 
+        // Append text helpers to target field
+        function insertTemplate(text) {
+            const curVal = inputNotes.value;
+            if (curVal.trim() === '') {
+                inputNotes.value = text;
+            } else {
+                inputNotes.value = curVal.trim() + '\n' + text;
+            }
+            updateEmailPreview();
+            showNotification("範本文字已成功附加於說明欄！", "success");
+        }
+
+        function openCustomModal(templateType, title, iconClass) {
+            currentActiveTemplate = templateType;
+            modalHeaderTitle.textContent = title;
+            modalHeaderIcon.className = `fa-solid ${iconClass} text-indigo-600 text-lg`;
+
+            // Hide all sub-panels
+            document.querySelectorAll('.tmpl-panel').forEach(panel => {
+                panel.classList.add('hidden');
+            });
+
+            // Show active sub-panel
+            const activePanel = document.getElementById(`panel-${templateType}`);
+            if (activePanel) {
+                activePanel.classList.remove('hidden');
+            }
+
+            // Context pre-populators
+            if (templateType === 'date') {
+                const today = new Date().toISOString().split('T')[0];
+                document.getElementById('param-date-picker').value = today;
+            } else if (templateType === 'later') {
+                const docs = Array.from(selectedDocTypes).join('、') || '相關證明';
+                document.getElementById('param-later-doc').value = docs;
+            } else if (templateType === 'difficulty') {
+                const docs = Array.from(selectedDocTypes).join('、') || '相關證明';
+                document.getElementById('param-difficulty-doc').value = docs;
+            }
+
+            // Display modal
+            templateModal.classList.remove('hidden');
+            setTimeout(() => {
+                templateModal.classList.remove('opacity-0');
+                templateModal.querySelector('.transform').classList.remove('scale-95');
+            }, 50);
+        }
+
+        function closeCustomModal() {
+            templateModal.classList.add('opacity-0');
+            templateModal.querySelector('.transform').classList.add('scale-95');
+            setTimeout(() => {
+                templateModal.classList.add('hidden');
+            }, 300);
+        }
+
+        function processModalConfirm() {
+            let compiledText = '';
+
+            if (currentActiveTemplate === 'date') {
+                const rawDate = document.getElementById('param-date-picker').value;
+                const relation = document.getElementById('param-date-relation').value;
+                if (!rawDate) {
+                    showNotification("請選擇聯絡日期！", "error");
+                    return;
+                }
+                const dateObj = new Date(rawDate);
+                const weekdays = ["日", "一", "二", "三", "四", "五", "六"];
+                const dayName = weekdays[dateObj.getDay()];
+                const month = dateObj.getMonth() + 1;
+                const dateVal = dateObj.getDate();
+                compiledText = `方便聯絡日期：${month}月${dateVal}日 (星期${dayName}) ${relation}聯絡`;
+            } 
+            else if (currentActiveTemplate === 'contact') {
+                const name = document.getElementById('param-contact-name').value.trim() || 'OOO';
+                const phone = document.getElementById('param-contact-phone').value.trim() || '09**-***-***';
+                compiledText = `若後續不方便聯絡本人，可直接聯絡協助聯繫的親友${name}，連絡電話是${phone}`;
+            } 
+            else if (currentActiveTemplate === 'later') {
+                const doc = document.getElementById('param-later-doc').value.trim() || '相關資料';
+                const days = document.getElementById('param-later-days').value.trim() || '幾';
+                compiledText = `本次${doc}資料還沒補齊，預計${days}天後可補傳。`;
+            } 
+            else if (currentActiveTemplate === 'difficulty') {
+                const doc = document.getElementById('param-difficulty-doc').value.trim() || '相關資料';
+                const reason = document.getElementById('param-difficulty-reason').value.trim() || '不便提供之原因';
+                compiledText = `本次${doc}資料還沒補齊，因${reason}，近兩周內可能不方便回傳。`;
+            } 
+            else if (currentActiveTemplate === 'mobile') {
+                const phone = document.getElementById('param-mobile-phone').value.trim();
+                if (!phone) {
+                    showNotification("請輸入聯絡手機號碼！", "error");
+                    return;
+                }
+                compiledText = `聯絡手機：${phone}`;
+            } 
+            else if (currentActiveTemplate === 'tel') {
+                const phone = document.getElementById('param-tel-phone').value.trim();
+                if (!phone) {
+                    showNotification("請輸入聯絡市話號碼！", "error");
+                    return;
+                }
+                const ext = document.getElementById('param-tel-ext').value.trim();
+                compiledText = `聯絡市話：${phone}${ext ? ' 分機 ' + ext : ''}`;
+            }
+
+            if (compiledText) {
+                insertTemplate(compiledText);
+            }
+            closeCustomModal();
+        }
+
         function attachEventListeners() {
+            // Fields tracking
+            inputRecipient.addEventListener('input', updateEmailPreview);
+            inputEmail.addEventListener('input', updateEmailPreview);
+            inputPassword.addEventListener('input', updateEmailPreview);
+            inputNotes.addEventListener('input', updateEmailPreview);
 
-            // Form Inputs live listening
-            const inputs = [inputRecipient, inputEmail, inputSubmitter, inputBorrower, inputPassword, inputNotes];
-            inputs.forEach(input => {
-                input.addEventListener('input', updateEmailPreview);
+            // Anti-fool synchronizers
+            inputBorrower.addEventListener('input', validateAndSyncNames);
+            inputSubmitter.addEventListener('input', validateAndSyncNames);
+
+            // Basic Text Templates execution
+            btnTmplTime.addEventListener('click', () => {
+                insertTemplate("方便聯絡時間：工作日 12:00-13:30 及 18:00 以後");
             });
 
-            // Radio Button selection listeners
-            const radioButtons = document.querySelectorAll('input[type="radio"]');
-            radioButtons.forEach(radio => {
-                radio.addEventListener('change', () => {
-                    setupRadioButtons();
-                    updateEmailPreview();
-                });
+            // Modal Template Triggers
+            btnTmplDate.addEventListener('click', () => {
+                openCustomModal('date', '方便聯絡日期設定', 'fa-calendar-days');
             });
 
-            // Document checkboxes change handler (Ensure at least 1 is selected)
+            btnTmplContact.addEventListener('click', () => {
+                openCustomModal('contact', '第三聯絡人資訊設定', 'fa-user-tag');
+            });
+
+            btnTmplLater.addEventListener('click', () => {
+                openCustomModal('later', '預計延後補件時間', 'fa-clock');
+            });
+
+            btnTmplDifficulty.addEventListener('click', () => {
+                openCustomModal('difficulty', '困難或遲繳理由說明', 'fa-circle-exclamation');
+            });
+
+            btnTmplMobile.addEventListener('click', () => {
+                openCustomModal('mobile', '自訂聯絡手機', 'fa-mobile-screen');
+            });
+
+            btnTmplTel.addEventListener('click', () => {
+                openCustomModal('tel', '自訂聯絡市話', 'fa-phone-volume');
+            });
+
+            btnTmplClear.addEventListener('click', () => {
+                inputNotes.value = '';
+                updateEmailPreview();
+                showNotification("已成功清空說明欄位！", "success");
+            });
+
+            // Modal Controls listeners
+            btnModalClose.addEventListener('click', closeCustomModal);
+            btnModalCancel.addEventListener('click', closeCustomModal);
+            btnModalConfirm.addEventListener('click', processModalConfirm);
+            
+            // Close modal when clicking dark overlay
+            templateModal.addEventListener('click', (e) => {
+                if (e.target === templateModal) closeCustomModal();
+            });
+
+            // Checkbox multi selection constraints (Default starts unselected; user can clear down to 0)
             docTypesContainer.addEventListener('change', (e) => {
                 if (e.target.classList.contains('doc-checkbox')) {
                     const docName = e.target.getAttribute('data-doc');
@@ -588,62 +995,66 @@ ${docListText}`;
                         selectedDocTypes.add(docName);
                         label.className = "flex items-center justify-between p-3 rounded-xl border border-indigo-200 bg-indigo-50/40 text-indigo-900 hover:bg-slate-50 cursor-pointer transition-all";
                     } else {
-                        // Prevent unchecking the last item
-                        if (selectedDocTypes.size <= 1) {
-                            e.target.checked = true;
-                            showNotification("補件種類最少需點選一項項目！", "error");
-                            return;
-                        }
                         selectedDocTypes.delete(docName);
                         label.className = "flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 cursor-pointer transition-all";
                     }
 
                     selectedCountBadge.textContent = `已選 ${selectedDocTypes.size} 項`;
+                    
+                    // Dynamic styling of badge depending on whether at least one is selected
+                    if (selectedDocTypes.size === 0) {
+                        selectedCountBadge.className = "text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-50 text-rose-600 border border-rose-100";
+                    } else {
+                        selectedCountBadge.className = "text-xs font-semibold px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-600 border border-indigo-100";
+                    }
+                    
                     updateEmailPreview();
                 }
             });
 
-            // Password Toggle Group listener
+            // Password group logic
             hasPasswordCheckbox.addEventListener('change', (e) => {
                 if (e.target.checked) {
                     passwordInputGroup.classList.remove('hidden');
                 } else {
                     passwordInputGroup.classList.add('hidden');
-                    inputPassword.value = ''; // Reset password content
+                    inputPassword.value = '';
                 }
                 updateEmailPreview();
             });
 
-            // Copy Features
+            // Radio Groups selection trigger
+            const radios = document.querySelectorAll('input[type="radio"]');
+            radios.forEach(radio => {
+                radio.addEventListener('change', () => {
+                    setupRadioStates();
+                    validateAndSyncNames();
+                });
+            });
+
+            // Clipboard Action Functions
             copyAllBtn.addEventListener('click', () => {
-                const textToCopy = previewBody.textContent;
-                copyToClipboard(textToCopy, "已成功複製信件全文至剪貼簿！");
+                const text = previewBody.textContent;
+                copyToClipboard(text, "已成功複製信件全文至剪貼簿！");
             });
 
             copySubjectBtn.addEventListener('click', () => {
-                const textToCopy = previewSubject.textContent;
-                copyToClipboard(textToCopy, "已成功複製標題至剪貼簿！");
+                const text = previewSubject.textContent;
+                copyToClipboard(text, "已成功複製標題至剪貼簿！");
             });
 
-            // Trigger actual Mailto execution when Clicking 【補件】 Send Button
+            // Trigger Mailto Link (With smart validation for empty document types)
             sendEmailBtn.addEventListener('click', () => {
-                // Perform quick validation
-                if (!inputRecipient.value.trim() || !inputEmail.value.trim()) {
-                    showNotification("請填寫代理人姓名與信箱！", "error");
-                    return;
-                }
-                if (!inputSubmitter.value.trim()) {
-                    showNotification("請填寫補件人姓名！", "error");
-                    inputSubmitter.focus();
-                    return;
-                }
-                if (!inputBorrower.value.trim()) {
-                    showNotification("請填寫借款人姓名！", "error");
-                    inputBorrower.focus();
-                    return;
-                }
                 if (selectedDocTypes.size === 0) {
-                    showNotification("請至少選擇一項補件種類項目！", "error");
+                    showNotification("請至少勾選一項補件項目！", "error");
+                    return;
+                }
+                if (!isFormValid) {
+                    showNotification("表單資訊存有衝突警告，請修正後重試！", "error");
+                    return;
+                }
+                if (!inputBorrower.value.trim() || !inputSubmitter.value.trim()) {
+                    showNotification("請完成必填名稱欄位！", "error");
                     return;
                 }
 
@@ -651,35 +1062,39 @@ ${docListText}`;
                 const subject = previewSubject.textContent;
                 const body = previewBody.textContent;
 
-                // Build mailto URI string
                 const mailtoUrl = `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
                 
-                // Attempt to initiate system mail client
+                // If the mailto URL exceeds standard limits, trigger warning prompt
+                if (mailtoUrl.length > 2000) {
+                    showNotification("內容過長，建議改用「複製全文」貼入信件，避免內容被 Outlook 截斷！", "warning");
+                } else {
+                    showNotification("已呼叫預設信件程式！開啟後記得【手動附加您的補件檔案】！");
+                }
+
                 window.location.href = mailtoUrl;
-                showNotification("已呼叫您的預設郵件軟體，開啟後請務必手動夾帶實體檔案！");
             });
         }
 
-        // Cross-browser Copy Execution
-        function copyToClipboard(text, successMsg) {
+        // Safe Clipboard copy helper
+        function copyToClipboard(text, msg) {
             const textarea = document.createElement('textarea');
             textarea.value = text;
-            textarea.style.position = 'fixed'; // Avoid scrolling to bottom
+            textarea.style.position = 'fixed';
             document.body.appendChild(textarea);
             textarea.select();
             try {
                 document.execCommand('copy');
-                showNotification(successMsg, "success");
+                showNotification(msg, "success");
             } catch (err) {
-                showNotification("複製失敗，請手動複製", "error");
-                console.error(err);
+                showNotification("複製失敗，請手動複製信件文字", "error");
             }
             document.body.removeChild(textarea);
         }
 
-        // Initialize script immediately on page load
+        // Run application script instantly on window load
         window.onload = function() {
             init();
+            attachEventListeners();
         };
     </script>
 </body>
